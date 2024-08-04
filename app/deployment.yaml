@@ -2,20 +2,19 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: example-deployment
-  labels:
-    app: example
+  namespace: default # Add the namespace here
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: example
+      app: example-app
   template:
     metadata:
       labels:
-        app: example
+        app: example-app
     spec:
       containers:
-      - name: example
+      - name: example-container
         image: nginx:latest
         ports:
         - containerPort: 80
